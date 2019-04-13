@@ -1,0 +1,14 @@
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\bin\Debug\netcoreapp2.2\PJ_webservice_Dapper.deps.json
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\bin\Debug\netcoreapp2.2\PJ_webservice_Dapper.runtimeconfig.json
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\bin\Debug\netcoreapp2.2\PJ_webservice_Dapper.runtimeconfig.dev.json
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\bin\Debug\netcoreapp2.2\PJ_webservice_Dapper.dll
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.csprojAssemblyReference.cache
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.csproj.CoreCompileInputs.cache
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.RazorAssemblyInfo.cache
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.RazorAssemblyInfo.cs
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.AssemblyInfoInputs.cache
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.AssemblyInfo.cs
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.RazorTargetAssemblyInfo.cache
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\bin\Debug\netcoreapp2.2\PJ_webservice_Dapper.pdb
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.dll
+C:\Users\Noppadon\source\repos\PJ_webservice_Dapper\PJ_webservice_Dapper\obj\Debug\netcoreapp2.2\PJ_webservice_Dapper.pdb
