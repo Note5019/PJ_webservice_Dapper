@@ -4,43 +4,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PJ_webservice_Dapper.Interfaces;
 using PJ_webservice_Dapper.Models;
+using PJ_webservice_Dapper.Provider;
 
 namespace PJ_webservice_Dapper.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        private readonly IProductProvider productProvider;
-        public ProductController(IProductProvider productProvider)
+        private readonly ICategoryProvider categoryProvider;
+        public CategoryController(ICategoryProvider categoryProvider)
         {
-            this.productProvider = productProvider;
+            this.categoryProvider = categoryProvider;
         }
-        
-        // GET: api/Product
+        // GET: api/Category
         [HttpGet]
-        public IEnumerable<Product> Get([FromBody] SearchProduct searchReq)
+        public IEnumerable<Category> Get()
         {
-            return productProvider.Get(searchReq);
+            return categoryProvider.Get();
         }
 
-        // GET: api/Product/5
-        [HttpGet("{productID}", Name = "GetProductID")]
-        public IEnumerable<Product> Get(string productID)
+        // GET: api/Category/5
+        [HttpGet("{categoryID}", Name = "GetCategoryID")]
+        public string Get(int id)
         {
-            return productProvider.GetByID(productID);
+            return "value";
         }
 
-        // POST: api/Product
+        // POST: api/Category
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Product/5
+        // PUT: api/Category/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

@@ -11,6 +11,7 @@ namespace PJ_webservice_Dapper.Interfaces
     public interface IProductProvider
     {
         IEnumerable<Product> Get(SearchProduct searchReq);
+        IEnumerable<Product> GetByID(string productID);
     }
 
     public class ProductProvider : IProductProvider
@@ -23,10 +24,22 @@ namespace PJ_webservice_Dapper.Interfaces
         public IEnumerable<Product> Get(SearchProduct searchReq)
         {
             IEnumerable<Product> product = null;
-            using(var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 //product = connection.Query<Product>("SELECT * FROM products;");
-                string qryStr = $"EXEC getProducts '{searchReq.ProductID}','{searchReq.ProductName}','{searchReq.CatID}',{searchReq.PriceFrom},{searchReq.PriceTo};";
+                string qryStr = $"EXEC getProducts @ProductID,@ProductName,@CatID,@PriceFrom,@PriceTo;";
+                product = connection.Query<Product>(qryStr, searchReq);
+            }
+            return product;
+        }
+
+        public IEnumerable<Product> GetByID(string productID)
+        {
+            IEnumerable<Product> product = null;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                //product = connection.Query<Product>("SELECT * FROM products;");
+                string qryStr = $"EXEC getProductByID '{productID}';";
                 product = connection.Query<Product>(qryStr);
             }
             return product;
