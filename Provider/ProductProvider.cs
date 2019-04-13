@@ -12,6 +12,9 @@ namespace PJ_webservice_Dapper.Interfaces
     {
         IEnumerable<Product> Get(SearchProduct searchReq);
         IEnumerable<Product> GetByID(string productID);
+        Response Insert(Product data);
+        Response Update(string productID,Product product);
+        Response Delete(string productID);
     }
 
     public class ProductProvider : IProductProvider
@@ -39,10 +42,69 @@ namespace PJ_webservice_Dapper.Interfaces
             using (var connection = new SqlConnection(connectionString))
             {
                 //product = connection.Query<Product>("SELECT * FROM products;");
-                string qryStr = $"EXEC getProductByID '{productID}';";
-                product = connection.Query<Product>(qryStr);
+                string qryStr = $"EXEC getProductByID @productID;";
+                product = connection.Query<Product>(qryStr, new { productID });
             }
             return product;
+        }
+
+        public Response Insert(Product product)
+        {
+            int row = -1;
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    //product = connection.Query<Product>("SELECT * FROM products;");
+                    string qryStr = $"EXEC insertProduct  @ProductID,@ProductName,@CatID,@Price,@Amount,@ImgURL;";
+                    row = connection.Execute(qryStr, product);
+                }
+                return new Response("success", row);
+            }
+            catch(Exception err)
+            {
+                return new Response(err.Message, row);
+
+            }
+        }
+        public Response Update(string productID,Product product)
+        {
+            int row = -1;
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    //product = connection.Query<Product>("SELECT * FROM products;");
+                    string qryStr = $"EXEC updateProduct  @ProductID,@ProductName,@CatID,@Price,@Amount,@ImgURL;";
+                    product.ProductID = productID;
+                    row = connection.Execute(qryStr, product);
+                }
+                return new Response("success", row);
+            }
+            catch(Exception err)
+            {
+                return new Response(err.Message, row);
+
+            }
+        }
+        public Response Delete(string productID)
+        {
+            int row = -1;
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    //product = connection.Query<Product>("SELECT * FROM products;");
+                    string qryStr = $"EXEC deleteProduct  @ProductID";
+                    row = connection.Execute(qryStr, new { productID });
+                }
+                return new Response("success", row);
+            }
+            catch (Exception err)
+            {
+                return new Response(err.Message, row);
+
+            }
         }
     }
 }

@@ -36,20 +36,23 @@ namespace PJ_webservice_Dapper.Controllers
 
         // POST: api/Product
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Response Post([FromBody] Product data)
         {
+            return productProvider.Insert(data);
         }
 
         // PUT: api/Product/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{productID}")]
+        public Response Put(string productID, [FromBody] Product data)
         {
+            return productProvider.Update(productID,data);
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{productID}")]
+        public Response Delete(string productID)
         {
+            return productProvider.Delete(productID);
         }
     }
 }
