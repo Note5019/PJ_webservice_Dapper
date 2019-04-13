@@ -21,7 +21,7 @@ namespace PJ_webservice_Dapper
         {
             Configuration = configuration;
         }
-
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,6 +29,17 @@ namespace PJ_webservice_Dapper
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             var config = builder.Build();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder2 =>
+                {
+                    builder2.WithOrigins("http://localhost:4200")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod(); ;
+                });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IProductProvider>(f => new ProductProvider(config["ConnectionString:shop_nb"]));
@@ -43,6 +54,7 @@ namespace PJ_webservice_Dapper
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseMvc();
         }
     }

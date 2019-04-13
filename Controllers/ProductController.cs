@@ -19,13 +19,24 @@ namespace PJ_webservice_Dapper.Controllers
         {
             this.productProvider = productProvider;
         }
-        
+
         // GET: api/Product
         [HttpGet]
-        public IEnumerable<Product> Get([FromBody] SearchProduct searchReq)
+        public IEnumerable<Product> Get([FromQuery] SearchProduct searchReq)
         {
+            if (searchReq.PriceFrom == 0 && searchReq.PriceTo == 0)
+            {
+                searchReq.PriceTo = 99999999;
+            }
             return productProvider.Get(searchReq);
         }
+
+        //// GET: api/Product
+        //[HttpGet]
+        //public SearchProduct Get([FromQuery] SearchProduct searchReq)
+        //{
+        //    return searchReq;
+        //}
 
         // GET: api/Product/5
         [HttpGet("{productID}", Name = "GetProductID")]
